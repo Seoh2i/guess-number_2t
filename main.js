@@ -27,7 +27,7 @@ function pickRandomNum(){
 }
 
 function play() {
-    let userValue = userInput.value
+    let userValue = userInput.value;
 
     chances -- ;
     chanceArea.textContent = `남은 기회: ${chances}회`
