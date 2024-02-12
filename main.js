@@ -63,6 +63,7 @@ function play() {
     
         if(gameOver == true){
             playButton.disabled = true;
+            resultArea.textContent = "Press Reset button, and Try again!"
         }
     }
 
@@ -79,7 +80,7 @@ function play() {
         history = [];
         // 결과 영역 리셋
         resultArea.textContent = "결과값이 여기 나옵니다";
-        // Go!버튼 활성화
+        // Bet버튼 활성화
         playButton.disabled = false;
         // 게임 오버 상태 리셋
         gameOver = false;
