@@ -12,9 +12,14 @@
 let computerNum =0;
 let playButton = document.getElementById("play-button");
 let userInput = document.getElementById("user-input");
-let resultArea = document.getElementById("result-area")
+let resultArea = document.getElementById("result-area");
+let resetButton = document.getElementById("reset-button");
+let chances = 5
+let gameover = false
+let chanceArea = document.getElementById("chance-Area")
 
 playButton.addEventListener("click",play) //play()는 안됨! 매개변수로 사용할거기 때문에 괄호 넣지 말기.
+resetButton.addEventListener("click",reset)
 
 function pickRandomNum(){
     computerNum =Math.floor(Math.random() * 100)+1;
@@ -23,6 +28,11 @@ function pickRandomNum(){
 
 function play() {
     let userValue = userInput.value
+
+    chances -- ;
+    chanceArea.textContent = `남은 기회: ${chances}회`
+    console.log("chances", chances)
+
     if(userValue < computerNum){
         resultArea.textContent = "UP!!!"
     }else if(userValue > computerNum){
@@ -30,6 +40,22 @@ function play() {
     }else{
         resultArea.textContent = "You win!!"
     }
+
+    if(chances <1){
+        gameover = true
+    }
+
+    if(gameover == true){
+        playButton.disabled = true
+    }
 }
 
+function reset() {
+    // user input 숫자 없애기
+    userInput.value = ""
+    //새로운 번호가 생성
+    pickRandomNum()
+
+    resultArea.textContent = "결과값이 여기 나옵니다";
+ }
 pickRandomNum();
